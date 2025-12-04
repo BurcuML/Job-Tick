@@ -149,3 +149,72 @@
             font-size: 40px;
             opacity: 0.8;
         }
+
+        .addButton{
+            border: none;
+            background: transparent;
+        }
+        .addButton:focus {
+            outline: none;
+        }
+        .addButton:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s;
+        }
+
+/* Modal (Arka Plan Karartma) */
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Kutusu */
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; color: #666; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+}
+
+.save-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-family: 'Fredoka', sans-serif;
+    transition: background 0.3s;
+}
+.save-button:hover { background: #ff5252; }
