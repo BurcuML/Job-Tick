@@ -119,6 +119,47 @@
         </div>
 
     </div>
+<div id="jobModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h2>Yeni İş Notu Yapıştır 📌</h2>
+        
+        <div class="form-group">
+            <label>Şirket Adı:</label>
+            <input type="text" id="companyInput" placeholder="Örn: Google">
+        </div>
 
+        <div class="form-group">
+            <label>Tarih:</label>
+            <input type="date" id="dateInput">
+        </div>
+
+        <div class="form-group">
+            <label>Sonraki Adım:</label>
+            <input type="text" id="nextStepInput" placeholder="Örn: Mülakat">
+        </div>
+
+        <div class="form-group">
+            <label>Durum:</label>
+            <select id="statusInput">
+                <option value="Bekleniyor">⏳ Bekleniyor</option>
+                <option value="Aradılar">📞 Aradılar</option>
+                <option value="Red" style="color: red;">❌ Reddedildi</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Notlar:</label>
+            <textarea id="noteInput" rows="3" placeholder="Ofis çok güzeldi..."></textarea>
+        </div>
+
+        <div class="form-group" style="display:flex; align-items:center; gap:10px;">
+            <input type="checkbox" id="mostWaitedInput">
+            <label for="mostWaitedInput">🔥 Most Waited (Favori)</label>
+        </div>
+
+        <button id="saveBtn" class="save-button">Panoya Yapıştır!</button>
+    </div>
+</div>
 </body>
 </html>
