@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -99,31 +99,33 @@
             <div class="sticker" style="top: 100px; right: 5px; font-size:25px;">🎬</div>
         </div>
 
-        <div class="card">
+        <!-- 
+        <div class="card ${colorInput}">
             <i class="fas fa-edit edit-btn" title="Notu Düzenle"></i>
             <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i>
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
-                <h2 class="company-name"></h2>
-                <span class="date"><i class="far fa-calendar-alt"></i></span>
+            <h2 class="company-name"></h2>
+            <span class="date"><i class="far fa-calendar-alt"></i></span>
             </div>
 
             <div class="info-row">
-                <span class="label">Durum?</span>
-                <span class="value status-badge" style="color: red;"></span>
+            <span class="label">Durum?</span>
+            <span class="value status-badge" style="color: red;"></span>
             </div>
 
             <div class="info-row">
-                <span class="label">Sonraki Adım:</span>
-                <span class="value"></span>
+            <span class="label">Sonraki Adım:</span>
+            <span class="value"></span>
             </div>
 
             <div class="info-row">
-                <span class="label">Notlar:</span>
-                <span class="value"></span>
+            <span class="label">Notlar:</span>
+            <span class="value"></span>
             </div>
             <div class="sticker" style="top: 100px; right: 5px; font-size:25px;">🎬</div>
         </div>
+        -->
 
         <div class="card"
             style="background: rgba(0,0,0,0.03); border: 2px dashed #ccc; align-items: center; justify-content: center; cursor: pointer;">
@@ -165,7 +167,15 @@
                 <label>Notlar:</label>
                 <textarea id="noteInput" rows="3" placeholder="Ofis çok güzeldi..."></textarea>
             </div>
-
+            <div class="form-group">
+                <label for="colorInput">Not Rengi Seç:</label>
+                <select id="colorInput">
+                    <option value="pink">Pembe</option>
+                    <option value="blue">Mint</option>
+                    <option value="yellow">Sarı</option>
+                    <option value="purple">Mor</option>
+                </select>
+            </div>
             <div class="form-group" style="display:flex; align-items:center; gap:10px;">
                 <input type="checkbox" id="mostWaitedInput">
                 <label for="mostWaitedInput">🔥 Most Waited (Favori)</label>
@@ -174,6 +184,7 @@
             <button id="saveBtn" class="save-button">Panoya Yapıştır!</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

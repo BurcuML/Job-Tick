@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,159 +13,141 @@
     🌐 TR
 </button>
     <h1>Job Hunt Tracker 📌</h1>
-    <div class="subtitle">Hayalindeki iş bir not kağıdı kadar yakın!</div>
+    <div class="subtitle">Your dream job is as close as a sticky note!</div>
 
     <div class="board">
 
-        <div class="card pink">
-    <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i> 
+        <div class="card blue">
+    <i class="fas fa-trash-alt delete-btn" title="Delete Note"></i> 
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
                 <h2 class="company-name">Google</h2>
-                <span class="date"><i class="far fa-calendar-alt"></i> 12 Ekim 2025</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> October 12, 2025</span>
             </div>
             
             <div class="info-row">
                 <span class="label">Heard Back?</span>
-                <span class="value status-badge">⏳ Bekleniyor</span>
+                <span class="value status-badge">⏳ Pending</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Next Step:</span>
-                <span class="value">Portfolyoyu güncelle</span>
+                <span class="value">Update portfolio</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Notes:</span>
-                <span class="value">Referans mektubu istenebilir.</span>
+                <span class="value">A reference letter might be requested.</span>
             </div>
 
             <div class="most-waited">🔥 Most Waited</div>
-            <div class="sticker" style="bottom: 5px; left: 10px;">🚀</div>
-        </div>
-
-        <div class="card blue">
-                <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i> 
-            <i class="fas fa-thumbtack pin"></i>
-            <div class="card-header">
-                <h2 class="company-name">Spotify</h2>
-                <span class="date"><i class="far fa-calendar-alt"></i> 10 Kasım 2025</span>
-            </div>
-            
-            <div class="info-row">
-                <span class="label">Heard Back?</span>
-                <span class="value status-badge" style="color: green;">📞 Aradılar!</span>
-            </div>
-
-            <div class="info-row">
-                <span class="label">Next Step:</span>
-                <span class="value">Teknik Mülakat (Salı)</span>
-            </div>
-
-            <div class="info-row">
-                <span class="label">Notes:</span>
-                <span class="value">Müzik API'leri hakkında çalış.</span>
-            </div>
-             <div class="sticker" style="top: 40px; right: 10px; font-size:30px;">🎧</div>
         </div>
 
         <div class="card yellow">
-                <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i> 
+                <i class="fas fa-trash-alt delete-btn" title="Delete Note"></i> 
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
                 <h2 class="company-name">Trendyol</h2>
-                <span class="date"><i class="far fa-calendar-alt"></i> 05 Aralık 2025</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> December 5, 2025</span>
             </div>
             
             <div class="info-row">
                 <span class="label">Heard Back?</span>
-                <span class="value status-badge">Mail Atıldı</span>
+                <span class="value status-badge">Email Sent</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Next Step:</span>
-                <span class="value">İK ile görüşme planla</span>
+                <span class="value">Plan a meeting with HR</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Notes:</span>
-                <span class="value">Ofis Maslak'ta, servis var mı sor?</span>
+                <span class="value">The office is in Maslak, ask if there is a shuttle service.</span>
             </div>
-             <div class="sticker" style="bottom: 10px; left: 60px;">🛒</div>
         </div>
 
         <div class="card purple">
-                <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i> 
+                <i class="fas fa-trash-alt delete-btn" title="Delete Note"></i> 
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
                 <h2 class="company-name">Netflix</h2>
-                <span class="date"><i class="far fa-calendar-alt"></i> 01 Eylül 2025</span>
+                <span class="date"><i class="far fa-calendar-alt"></i> September 1, 2025</span>
             </div>
             
             <div class="info-row">
                 <span class="label">Heard Back?</span>
-                <span class="value status-badge" style="color: red;">Reddedildi</span>
+                <span class="value status-badge" style="color: red;">Rejected</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Next Step:</span>
-                <span class="value">6 ay sonra tekrar dene</span>
+                <span class="value">Try again in 6 months</span>
             </div>
 
             <div class="info-row">
                 <span class="label">Notes:</span>
-                <span class="value">Deneyim eksik dediler.</span>
+                <span class="value">They said there was a lack of experience.</span>
             </div>
             <div class="sticker" style="top: 100px; right: 5px; font-size:25px;">🎬</div>
         </div>
 
         <div class="card" style="background: rgba(0,0,0,0.03); border: 2px dashed #ccc; align-items: center; justify-content: center; cursor: pointer;">
             <div style="font-size: 50px; color: #ccc;">+</div>
-            <div> <button id="addButton" class="addButton" style="font-family: 'Fredoka'; color: #999;">Yeni Başvuru Ekle</button> </div>
+            <div> <button id="addButton" class="addButton" style="font-family: 'Fredoka'; color: #999;">Add New Application</button> </div>
         </div>
 
     </div>
 <div id="jobModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-btn" id="closeModal">&times;</span>
-        <h2>Yeni İş Notu Yapıştır 📌</h2>
+        <h2>New Job Note 📌</h2>
         
         <div class="form-group">
-            <label>Şirket Adı:</label>
-            <input type="text" id="companyInput" placeholder="Örn: Google">
+            <label>Company Name:</label>
+            <input type="text" id="companyInput" placeholder="E.g., Google">
         </div>
 
         <div class="form-group">
-            <label>Tarih:</label>
+            <label>Date:</label>
             <input type="date" id="dateInput">
         </div>
 
         <div class="form-group">
-            <label>Sonraki Adım:</label>
-            <input type="text" id="nextStepInput" placeholder="Örn: Mülakat">
+            <label>Next Step:</label>
+            <input type="text" id="nextStepInput" placeholder="E.g., Interview">
         </div>
 
         <div class="form-group">
-            <label>Durum:</label>
+            <label>Status:</label>
             <select id="statusInput">
-                <option value="Bekleniyor">⏳ Bekleniyor</option>
-                <option value="Aradılar">📞 Aradılar</option>
-                <option value="Red" style="color: red;">❌ Reddedildi</option>
+                <option value="Pending">⏳ Pending</option>
+                <option value="Called">📞 Called</option>
+                <option value="Rejected" style="color: red;">❌ Rejected</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>Notlar:</label>
-            <textarea id="noteInput" rows="3" placeholder="Ofis çok güzeldi..."></textarea>
+            <label>Notes:</label>
+            <textarea id="noteInput" rows="3" placeholder="The office was amazing..."></textarea>
         </div>
-
+            <div class="form-group">
+                <label for="colorInput">Choose Note Color:</label>
+                <select id="colorInput">
+                    <option value="pink">Pink</option>
+                    <option value="blue">Mint</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="purple">Purple</option>
+                </select>
+            </div>
         <div class="form-group" style="display:flex; align-items:center; gap:10px;">
             <input type="checkbox" id="mostWaitedInput">
-            <label for="mostWaitedInput">🔥 Most Waited (Favori)</label>
+            <label for="mostWaitedInput">🔥 Most Waited</label>
         </div>
 
-        <button id="saveBtn" class="save-button">Panoya Yapıştır!</button>
+        <button id="saveBtn" class="save-button">Pin to Board!</button>
     </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
