@@ -92,11 +92,11 @@
             <div class="sticker" style="top: 100px; right: 5px; font-size:25px;">🎬</div>
         </div>
 
-        <div class="card" style="background: rgba(0,0,0,0.03); border: 2px dashed #ccc; align-items: center; justify-content: center; cursor: pointer;">
+        <div class="card" id="addBtn"
+            style="background: rgba(0,0,0,0.03); border: 2px dashed #ccc; align-items: center; justify-content: center; cursor: pointer;">
             <div style="font-size: 50px; color: #ccc;">+</div>
-            <div> <button id="addButton" class="addButton" style="font-family: 'Fredoka'; color: #999;">Add New Application</button> </div>
+            <div style="font-family: 'Fredoka'; color: #999;">Add New Application</div>
         </div>
-
     </div>
 <div id="jobModal" class="modal-overlay">
     <div class="modal-content">
@@ -121,7 +121,7 @@
         <div class="form-group">
             <label>Status:</label>
             <select id="statusInput">
-                <option value="Pending">⏳ Pending</option>
+                <option value="Pending">⏳ Applied/Pending</option>
                 <option value="Called">📞 Called</option>
                 <option value="Rejected" style="color: red;">❌ Rejected</option>
             </select>
