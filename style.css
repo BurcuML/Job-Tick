@@ -168,20 +168,6 @@
      opacity: 0.8;
  }
 
- .addButton {
-     border: none;
-     background: transparent;
- }
-
- .addButton:focus {
-     outline: none;
- }
-
- .addButton:hover {
-     transform: scale(1.1);
-     transition: transform 0.3s;
- }
-
  /* Modal (Arka Plan Karartma) */
  .modal-overlay {
      display: none;
@@ -194,6 +180,7 @@
      z-index: 100;
      justify-content: center;
      align-items: center;
+     overflow: hidden;
  }
 
  /* Modal Kutusu */
@@ -203,9 +190,11 @@
      border-radius: 15px;
      width: 90%;
      max-width: 400px;
+     max-height: 90vh;
      position: relative;
      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
      font-family: 'Fredoka', sans-serif;
+     overflow: auto;
  }
 
  .close-btn {
@@ -334,4 +323,32 @@
     background: #4CAF50;
     color: white;
     transform: scale(1.1) rotate(-5deg);
+}
+
+@media (max-width: 600px) {
+
+    .modal-content {
+        padding: 23px; 
+        
+        max-width: 85%; 
+        
+        max-height: 90%; 
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        padding: 8px;
+        font-size: 1rem;
+    }
+
+    .language-btn {
+        right: 15px;
+        top: 15px;
+        font-size: 1.2rem;
+        padding: 8px 12px;
+    }
+    
+    .pin {
+        font-size: 20px;
+        top: -10px;
+    }
 }

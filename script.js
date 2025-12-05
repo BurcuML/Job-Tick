@@ -5,16 +5,23 @@ const jobModal = document.getElementById('jobModal');
 const modalContent = document.querySelector('.modal-content');
 const closeModal = document.getElementById('closeModal');
 const colorInput = document.getElementById('colorInput').value;
-
+const companyInput = document.getElementById('companyInput');
+const dateInput = document.getElementById('dateInput');
+const nextStepInput = document.getElementById('nextStepInput');
+const statusInput = document.getElementById('statusInput');
+const noteInput = document.getElementById('noteInput');
+const mostWaitedInput = document.getElementById('mostWaitedInput');
+const addBtn = document.getElementById('addBtn');
 
 
 // Close Modal
 closeModal.addEventListener('click', () => {
     jobModal.style.display = 'none';
+
 });
 
 // Open Modal
-addButton.addEventListener('click', () => {
+addBtn.addEventListener('click', () => {
     jobModal.style.display = 'block';
 });
 
