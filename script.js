@@ -14,6 +14,8 @@ const mostWaitedInput = document.getElementById('mostWaitedInput');
 const addBtn = document.getElementById('addBtn');
 
 
+document.addEventListener('DOMContentLoaded', loadJobApplications);
+
 // Close Modal
 closeModal.addEventListener('click', () => {
     jobModal.style.display = 'none';
@@ -41,6 +43,9 @@ if (langToggle) {
     });
 }
 
+
+
+
 // Save Job Application
 saveBtn.addEventListener('click', () => {
 
@@ -51,9 +56,10 @@ saveBtn.addEventListener('click', () => {
     let note = noteInput.value;
     let selectedColor = colorInput.value;
 
-    
+
     addJobApplication(company, date, nextStep, status, note, selectedColor, mostWaitedInput);
-    
+    loadJobApplications();
+
     jobModal.style.display = 'none';
 
 });
@@ -66,12 +72,13 @@ function addJobApplication(company, date, nextStep, status, note, selectedColor,
         return;
     }
 
+
     const jobCard = document.createElement('div');
     jobCard.className = 'card ' + selectedColor;
 
     jobCard.innerHTML = `
-            <i class="fas fa-edit edit-btn" title="Notu Düzenle"></i>
-            <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i>
+            <i class="fas fa-edit edit-btn" title="Notu Düzenle" id="editNote"></i>
+            <i class="fas fa-trash-alt delete-btn" title="Notu Sil" id="deleteNote"></i>
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
             <h2 class="company-name">${company}</h2>
@@ -93,21 +100,61 @@ function addJobApplication(company, date, nextStep, status, note, selectedColor,
             <span class="value">${note}</span>
             </div>
 
-${mostWaitedInput.checked
+            ${mostWaitedInput.checked
             ? (currentPage === 'index.html' ?
                 `<div class="sticker">🔥 En Çok Beklenen</div>` :
                 `<div class="sticker">🔥 Most Waited</div>`) :
             ""}`;
 
+    // Delete Job Application
+    const deleteBtn = jobCard.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => {
+        if (confirm('Bu başvuruyu silmek istediğinize emin misiniz?')) {
+            jobContainer.removeChild(jobCard);
+            clearJobApplications(company, date, nextStep, status, note, selectedColor, mostWaitedInput.checked);
+        }
+    });
+
     jobContainer.appendChild(jobCard);
     jobContainer.appendChild(addBtn); // after adding new card, move add button to the end (appendchild does that)
+
 }
+
+
+function getJobApplications() {
+    const jobs = localStorage.getItem('jobApplications');
+    return jobs ? JSON.parse(jobs) : [];
+}
+
+
+function saveJobApplications(company, date, nextStep, status, note, selectedColor, mostWaited) {
+    const jobs = getJobApplications();
+    jobs.push({ company, date, nextStep, status, note, selectedColor, mostWaited });
+    localStorage.setItem('jobApplications', JSON.stringify(jobs));
+}
+
 
 // Load saved job applications from localStorage on page load
 function loadJobApplications() {
-    const savedJobs = JSON.parse(localStorage.getItem('jobApplications')) || [];
+    const savedJobs = getJobApplications();
     savedJobs.forEach(job => {
         addJobApplication(job.company, job.date, job.nextStep, job.status, job.note, job.selectedColor, { checked: job.mostWaited });
     });
+}
+
+
+function clearJobApplications(company, date, nextStep, status, note, selectedColor, mostWaited) {
+    const jobs = getJobApplications();
+    const filteredJobs = jobs.filter(job => 
+        !(job.company === company && job.date === date && job.nextStep === nextStep && job.status === status && job.note === note && job.selectedColor === selectedColor && job.mostWaited === mostWaited));
+    localStorage.setItem('jobApplications', JSON.stringify(filteredJobs));
+}
+
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    if (event.target == jobModal) {
+        jobModal.style.display = "none";
+    }
 }
 
