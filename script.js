@@ -29,6 +29,7 @@ addBtn.addEventListener('click', () => {
     jobModal.style.display = 'block';
 });
 
+
 if (langToggle) {
     langToggle.addEventListener('click', () => {
         const currentPage = window.location.pathname.split('/').pop();
@@ -50,9 +51,9 @@ saveBtn.addEventListener('click', () => {
     let note = noteInput.value;
     let selectedColor = colorInput.value;
 
-
+    
     addJobApplication(company, date, nextStep, status, note, selectedColor, mostWaitedInput);
-
+    
     jobModal.style.display = 'none';
 
 });
@@ -64,8 +65,10 @@ function addJobApplication(company, date, nextStep, status, note, selectedColor,
         alert('Lütfen şirket adı ve başvuru tarihini giriniz.');
         return;
     }
+
     const jobCard = document.createElement('div');
     jobCard.className = 'card ' + selectedColor;
+
     jobCard.innerHTML = `
             <i class="fas fa-edit edit-btn" title="Notu Düzenle"></i>
             <i class="fas fa-trash-alt delete-btn" title="Notu Sil"></i>
@@ -97,5 +100,14 @@ ${mostWaitedInput.checked
             ""}`;
 
     jobContainer.appendChild(jobCard);
+    jobContainer.appendChild(addBtn); // after adding new card, move add button to the end (appendchild does that)
+}
+
+// Load saved job applications from localStorage on page load
+function loadJobApplications() {
+    const savedJobs = JSON.parse(localStorage.getItem('jobApplications')) || [];
+    savedJobs.forEach(job => {
+        addJobApplication(job.company, job.date, job.nextStep, job.status, job.note, job.selectedColor, { checked: job.mostWaited });
+    });
 }
 
