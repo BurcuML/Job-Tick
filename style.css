@@ -20,19 +20,11 @@
  }
 
  h1 {
-     text-align: center;
-     font-family: 'Fredoka', sans-serif;
-     color: #ff6b6b;
-     font-size: 3rem;
-     margin-bottom: 10px;
-     text-shadow: 2px 2px 0px #ffd1d1;
+     text-align: center; font-family: 'Fredoka', sans-serif; color: #ff6b6b; font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 0px #ffd1d1;
  }
 
  .subtitle {
-     text-align: center;
-     font-size: 1.2rem;
-     color: #888;
-     margin-bottom: 40px;
+     text-align: center;font-size: 1.2rem;color: #888;margin-bottom: 40px;
  }
 
  /* Grid Yapısı */
@@ -45,15 +37,7 @@
 
  /* Not Kartı Tasarımı */
  .card {
-     width: 280px;
-     min-height: 320px;
-     padding: 20px;
-     border-radius: 5px;
-     /* Hafif yuvarlatılmış */
-     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-     position: relative;
-     transition: transform 0.3s ease;
-     display: flex;
+     width: 280px;min-height: 320px;padding: 20px;border-radius: 5px;box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);position: relative;transition: transform 0.3s ease;display: flex;
      flex-direction: column;
      justify-content: space-between;
  }
@@ -228,16 +212,7 @@
  }
 
  .save-button {
-     width: 100%;
-     padding: 12px;
-     background: #ff6b6b;
-     color: white;
-     border: none;
-     border-radius: 8px;
-     cursor: pointer;
-     font-size: 1.2rem;
-     font-family: 'Fredoka', sans-serif;
-     transition: background 0.3s;
+     width: 100%;padding: 12px;background: #ff6b6b;color: white;border: none;border-radius: 8px;cursor: pointer;font-size: 1.2rem;font-family: 'Fredoka', sans-serif;transition: background 0.3s;
  }
 
  .save-button:hover {
@@ -303,7 +278,7 @@
 .edit-btn {
     position: absolute;
     top: 10px;
-    right: 55px; /* Silme butonundan (10px) biraz içeride (55px) konumlandırıldı */
+    right: 55px;
     font-size: 1.2rem;
     color: #4CAF50; 
     cursor: pointer;
@@ -326,27 +301,21 @@
 }
 
 @media (max-width: 600px) {
-
     .modal-content {
         padding: 23px; 
-        
         max-width: 85%; 
-        
         max-height: 90%; 
     }
-
     .form-group input, .form-group select, .form-group textarea {
         padding: 8px;
         font-size: 1rem;
     }
-
     .language-btn {
         right: 15px;
         top: 15px;
         font-size: 1.2rem;
         padding: 8px 12px;
     }
-    
     .pin {
         font-size: 20px;
         top: -10px;
