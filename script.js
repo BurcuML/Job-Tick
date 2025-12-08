@@ -134,11 +134,15 @@ function addJobApplication(job) {
             : ""} 
 `;
 
-
-
     //delete button
     jobCard.querySelector(".delete-btn").addEventListener('click', () => {
-        clearJobApplications(job.id);
+
+       let message = currentPage === 'index.html' ? 'Bu başvuruyu silmek istediğinize emin misiniz?' : 'Are you sure you want to delete this application?';
+       if (!confirm(message)) {
+           return;
+       }
+       
+        clearJobApplications(job.id);  
         renderJobs();
     })
 
