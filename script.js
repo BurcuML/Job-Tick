@@ -106,12 +106,12 @@ function addJobApplication(job) {
     jobCard.className = 'card ' + job.selectedColor;
 
     jobCard.innerHTML = `
-            <i class="fas fa-edit edit-btn" title="Notu Düzenle" id="editNote" data-id="${job.id}"></i>
-            <i class="fas fa-trash-alt delete-btn" title="Notu Sil" id="deleteNote" data-id="${job.id}"></i>
+            <i class="fas fa-edit edit-btn" title="Notu Düzenle" data-id="${job.id}"></i>
+            <i class="fas fa-trash-alt delete-btn" title="Notu Sil" data-id="${job.id}"></i>
             <i class="fas fa-thumbtack pin"></i>
             <div class="card-header">
             <h2 class="company-name">${job.company}</h2>
-            <span class="date"><i class="far fa-calendar-alt">${job.date}</i></span>
+            <span class="date"><i class="far fa-calendar-alt" style="margin-right: 5px;"></i>${job.date}</span>
             </div>
 
             <div class="info-row">
@@ -224,16 +224,6 @@ function clearJobApplications(id) {
 }
 
 
-/* // Load saved job applications from localStorage on page load
-function loadJobApplications() {
-const jobs = getJobApplications();
-jobs.forEach(job => {
-    
-});
-} */
-
 function loadJobApplications() {
     renderJobs();
 }
-
-
