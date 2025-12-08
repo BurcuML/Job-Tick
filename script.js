@@ -1,94 +1,90 @@
+const langToggle = document.getElementById('langToggle');
+const jobContainer = document.getElementById('jobContainer');
+const jobModal = document.getElementById('jobModal');
+const modalContent = document.querySelector('.modal-content');
+const closeModal = document.getElementById('closeModal');
+const saveBtn = document.getElementById('saveBtn');
+const colorInput = document.getElementById('colorInput');
+const companyInput = document.getElementById('companyInput');
+const dateInput = document.getElementById('dateInput');
+const nextStepInput = document.getElementById('nextStepInput');
+const statusInput = document.getElementById('statusInput');
+const noteInput = document.getElementById('noteInput');
+const mostWaitedInput = document.getElementById('mostWaitedInput');
+const addBtn = document.getElementById('addBtn');
+
+document.addEventListener('DOMContentLoaded', loadJobApplications);
+
 const currentPage = window.location.pathname.split('/').pop();
 let isEditing = false;
 let editingId = null;
 
+// Open Modal
+addBtn.addEventListener('click', () => {
+    jobModal.style.display = 'block';
+});
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const langToggle = document.getElementById('langToggle');
-    const jobContainer = document.getElementById('jobContainer');
-    const jobModal = document.getElementById('jobModal');
-    const modalContent = document.querySelector('.modal-content');
-    const closeModal = document.getElementById('closeModal');
-    const saveBtn = document.getElementById('saveBtn');
-    const colorInput = document.getElementById('colorInput');
-    const companyInput = document.getElementById('companyInput');
-    const dateInput = document.getElementById('dateInput');
-    const nextStepInput = document.getElementById('nextStepInput');
-    const statusInput = document.getElementById('statusInput');
-    const noteInput = document.getElementById('noteInput');
-    const mostWaitedInput = document.getElementById('mostWaitedInput');
-    const addBtn = document.getElementById('addBtn');
+// Close Modal
+closeModal.addEventListener('click', () => {
+    jobModal.style.display = 'none';
+    /*  companyInput.value = '';
+        dateInput.value = '';
+        nextStepInput.value = '';
+        statusInput.value = 'Bekleniyor';
+        noteInput.value = ''; */
+});
 
 
-    // Open Modal
-    addBtn.addEventListener('click', () => {
-        jobModal.style.display = 'block';
-    });
+// Save Job Application
+saveBtn.addEventListener('click', () => {
 
+    let company = companyInput.value;
+    let date = dateInput.value;
+    let nextStep = nextStepInput.value;
+    let status = statusInput.value;
+    let note = noteInput.value;
+    let selectedColor = colorInput.value;
+    let mostWaited = mostWaitedInput.checked;
 
-    // Close Modal
-    closeModal.addEventListener('click', () => {
-        jobModal.style.display = 'none';
-        /*  companyInput.value = '';
-            dateInput.value = '';
-            nextStepInput.value = '';
-            statusInput.value = 'Bekleniyor';
-            noteInput.value = ''; */
-    });
-
-
-    // Save Job Application
-    saveBtn.addEventListener('click', () => {
-
-        let company = companyInput.value;
-        let date = dateInput.value;
-        let nextStep = nextStepInput.value;
-        let status = statusInput.value;
-        let note = noteInput.value;
-        let selectedColor = colorInput.value;
-        let mostWaited = mostWaitedInput.checked;
-
-        if (company.trim() === '' || date.trim() === '') {
-            alert('Lütfen şirket adı ve başvuru tarihini giriniz.');
-            return;
-        }
-
-        const job = {
-            id: isEditing ? editingId : generateId(),
-            company,
-            date,
-            nextStep,
-            status,
-            note,
-            selectedColor,
-            mostWaited
-        };
-
-        saveJobApplications(job);
-
-        let isEditing = false;
-        let editingId = null;
-
-        jobModal.style.display = 'none';
-
-
-    });
-
-    if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            if (currentPage === 'index.html') {
-                window.location.href = 'en_index.html';
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    if (company.trim() === '' || date.trim() === '') {
+        alert('Lütfen şirket adı ve başvuru tarihini giriniz.');
+        return;
     }
 
+    const job = {
+        id: isEditing ? editingId : generateId(),
+        company,
+        date,
+        nextStep,
+        status,
+        note,
+        selectedColor,
+        mostWaited
+    };
 
-    loadJobApplications()
+    saveJobApplications(job);
+    renderJobs();
+
+    isEditing = false;
+    editingId = null;
+
+    jobModal.style.display = 'none';
+
 
 });
+
+if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        if (currentPage === 'index.html') {
+            window.location.href = 'en_index.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    });
+}
+
+
 
 
 // Close modal when clicking outside of it
@@ -133,56 +129,80 @@ function addJobApplication(job) {
             <span class="value">${job.note}</span>
             </div>
 
-${job.mostWaited.checked
-            ? `<div class="sticker">🔥 Most Waited</div>`
-            : ""}
-
-            `;
-
-            //delete button
-            jobCard.querySelector(".delete-btn").addEventListener('click', ()=>{
-                clearJobApplications(job.id);
-                renderJobs();
-            })
-
-            //edit button
-            jobCard.querySelector(".edit-btn").addEventListener('click', ()=>{
-                editModal(job)
-            });
+            ${job.mostWaited
+            ? `<div class="most-waited">🔥 Most Waited</div>`
+            : ""} 
+`;
 
 
-    jobContainer.appendChild(jobCard);
-    jobContainer.appendChild(addBtn); // after adding new card, move add button to the end (appendchild does that)
+
+    //delete button
+    jobCard.querySelector(".delete-btn").addEventListener('click', () => {
+        clearJobApplications(job.id);
+        renderJobs();
+    })
+
+    //edit button
+    jobCard.querySelector(".edit-btn").addEventListener('click', () => {
+        editModal(job)
+    });
+
 
     return jobCard;
 
 }
 
 
+/* 
+Bu fonksiyon ne yapıyor? (renderJobs)
+
+-Önce board'u sıfırlıyor
+
+-LocalStorage’daki job listesini çekiyor
+
+-Her job için bir kart DOM’a ekliyor
+
+-En son + butonunu koyuyor
+*/
+function renderJobs() {
+    jobContainer.innerHTML = "";
+
+    const jobs = getJobApplications();
+
+    jobs.forEach(job => {
+        const jobCard = addJobApplication(job);
+        jobContainer.appendChild(jobCard);
+    });
+
+    // Add Btn her zaman en sonda durmalı
+    jobContainer.appendChild(addBtn);
+}
+
 function editModal(job) {
-isEditing= true;
-editingId = job.id;
+    isEditing = true;
+    editingId = job.id;
 
-        companyInput.value = job.company;
-        dateInput.value = job.date;
-        nextStepInput.value = job.nextStep;
-        statusInput.value = job.status;
-        noteInput.value = job.note;
-        colorInput.value = job.selectedColor;
-        mostWaitedInput.checked = job.mostWaited;
+    companyInput.value = job.company;
+    dateInput.value = job.date;
+    nextStepInput.value = job.nextStep;
+    statusInput.value = job.status;
+    noteInput.value = job.note;
+    colorInput.value = job.selectedColor;
+    mostWaitedInput.checked = job.mostWaited;
 
-        jobModal.style.display = "block";
+    jobModal.style.display = "block";
 
 }
 
+
+
+//LOCALSTORAGE
 
 function getJobApplications() {
     const jobs = localStorage.getItem('jobApplications');
     return jobs ? JSON.parse(jobs) : [];
 }
 
-
-//LOCALSTORAGE
 
 function saveJobApplications(job) {
     const saveJobs = getJobApplications();
@@ -212,7 +232,8 @@ jobs.forEach(job => {
 });
 } */
 
-
-
+function loadJobApplications() {
+    renderJobs();
+}
 
 
